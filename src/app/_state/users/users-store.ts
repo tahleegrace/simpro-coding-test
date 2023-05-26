@@ -1,19 +1,8 @@
 import { EntityAdapter, EntityState, createEntityAdapter } from "@ngrx/entity";
 import { createActionGroup, createFeature, createReducer, emptyProps, props } from "@ngrx/store";
+import { User } from "../../_types/user";
 
 const UsersStoreKey = "users";
-
-export interface User {
-    id: string;
-    firstName: string;
-    lastName: string;
-    maidenName: string;
-    age: number;
-    gender: string;
-    email: string;
-    phone: string;
-    birthDate: string;
-}
 
 export interface UsersState extends EntityState<User> {
     selectedUserId: string | null;

@@ -17,6 +17,6 @@ bootstrapApplication(AppComponent, {
         provideStore(),
         provideState(UsersReducer),
         provideEffects(UsersEffects),
-        importProvidersFrom(BrowserAnimationsModule),
+        importProvidersFrom(BrowserAnimationsModule)
     ]
 });

@@ -1,9 +1,17 @@
-<h1>Users</h1>
+<h1>User Management</h1>
 <div class="row">
-    <div class="col-md-2">First Name</div>
-    <div class="col-md-2">Last Name</div>
-    <div class="col-md-2">User Name</div>
-    <div class="col-md-2">Email</div>
-    <div class="col-md-2">Phone</div>
-    <div class="col-md-2">Date of Birth</div>
+    <div class="col-md-2"><strong>First Name</strong></div>
+    <div class="col-md-2"><strong>Last Name</strong></div>
+    <div class="col-md-2"><strong>Gender</strong></div>
+    <div class="col-md-2"><strong>Email</strong></div>
+    <div class="col-md-2"><strong>Phone</strong></div>
+    <div class="col-md-2"><strong>Date of Birth</strong></div>
+</div>
+<div class="row" *ngFor="let user of users">
+    <div class="col-md-2">{{user.firstName}}</div>
+    <div class="col-md-2">{{user.lastName}}</div>
+    <div class="col-md-2">{{user.gender}}</div>
+    <div class="col-md-2">{{user.email}}</div>
+    <div class="col-md-2">{{user.phone}}</div>
+    <div class="col-md-2">{{user.birthDate}}</div> <!-- TODO: Format the date here. -->
 </div>
