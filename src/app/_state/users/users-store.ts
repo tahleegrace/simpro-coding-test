@@ -31,8 +31,6 @@ export const UsersReducer = createFeature({
     reducer: createReducer(
         initialState,
         on(UsersActions.saveInitialUsers, (state, props) => {
-            debugger;
-
             return {
                 selectedUserId: null,
                 ids: props.users.map(u => u.id),

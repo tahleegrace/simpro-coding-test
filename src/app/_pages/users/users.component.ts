@@ -39,4 +39,12 @@ export class UsersComponent implements OnInit {
         // TODO: Add error handling here.
         this.users$ = this.usersService.loadUsers();
     }
+
+    getChevron(user: User) {
+        return user.isOpen ? "Close" : "Open"; // TODO: Use a real chevron here.
+    }
+
+    toggleUser(user: User) {
+        this.usersService.toggleUser(user.id);
+    }
 }
