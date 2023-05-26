@@ -1,5 +1,5 @@
 import { EntityAdapter, EntityState, createEntityAdapter } from "@ngrx/entity";
-import { createActionGroup, createFeature, createReducer, emptyProps, props } from "@ngrx/store";
+import { createActionGroup, createFeature, createReducer, emptyProps, on, props } from "@ngrx/store";
 import { User } from "../../_types/user";
 
 const UsersStoreKey = "users";
@@ -14,6 +14,10 @@ const initialState: UsersState = usersAdapter.getInitialState({
     selectedUserId: null
 });
 
+const convertUsersArrayToDictionary = (users: User[]) => {
+    return Object.fromEntries(users.map(u => [u.id, u]));
+};
+
 export const UsersActions = createActionGroup({
     source: UsersStoreKey,
     events: {
@@ -24,6 +28,17 @@ export const UsersActions = createActionGroup({
 
 export const UsersReducer = createFeature({
     name: UsersStoreKey,
-    reducer: createReducer(initialState)
+    reducer: createReducer(
+        initialState,
+        on(UsersActions.saveInitialUsers, (state, props) => {
+            debugger;
+
+            return {
+                selectedUserId: null,
+                ids: props.users.map(u => u.id),
+                entities: convertUsersArrayToDictionary(props.users)
+            };
+        })
+    )
 });
 
